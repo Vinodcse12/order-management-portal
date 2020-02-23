@@ -1,0 +1,33 @@
+.app-container {
+  padding: 5%;;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+}
+
+a.navbar-brand {
+font-family: 'Pacifico', cursive;
+}
+
+nav.navbar.navbar-inverse {
+border-radius:0; 
+border:none;
+margin-bottom:0;
+z-index:100;
+}
+
+
+nav.navbar.navbar-inverse a {
+color: #fdfafc;
+}
+
+nav.navbar.navbar-inverse a:hover {
+color: #fdfafc;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+
+color: #fdfafc;
+background:none;
+}

@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'order-management-portal';
+  navbarOpen = false;
+  toggleNavbar(): void {
+    this.navbarOpen = !this.navbarOpen;
+  }
 }

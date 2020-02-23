@@ -1,0 +1,7 @@
+.registration-drop-down {
+  position: absolute;
+  width: 97%;
+  height: 30px;
+  border: 1px solid #80808052;
+  border-radius: unset;
+}

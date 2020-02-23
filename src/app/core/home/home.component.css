@@ -1,0 +1,21 @@
+.order-list{
+  position: absolute;
+  top: 20%;
+}
+
+.btn {
+  background-color: grey;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  float: right;
+}
+
+.btn-remove {
+  background-color: #f9f6f608;
+  border: none;
+  color: #191313;
+  font-size: 16px;
+  cursor: pointer;
+}
