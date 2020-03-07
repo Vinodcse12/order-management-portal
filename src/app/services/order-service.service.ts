@@ -18,7 +18,7 @@ export class OrderServiceService {
       productQuantity : productInfo.qty,
       totalAmount : productInfo.totalAmount,
       paymentMode : productInfo.paymentMethod,
-      userid : user.info.userid
+      userid : user.userid
     }
     const url = this.url +""+'/addNewOrder';
     return this.http.post(url, {payLoad} ); 

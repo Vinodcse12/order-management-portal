@@ -1,36 +1,30 @@
-<div class="container order-list">
-    <div class="row">
-      <div class="col-12 col-md-12">
-          <div class = "row">
-              <div class = "col-md-12">
-                 <div class="col-md-4">
-                   <h3 class = "">Order List</h3>
-                 </div>
-                 <div class="col-md-6">
-                   <button class="btn" (click)="addNewItem()">
-                     <i class="glyphicon glyphicon-plus"></i></button>
-                 </div>
-              </div>
-              <div class="col-md-12">
-                  <table class = "table">
-                      <tr>
-                         <th>Product Name</th>
-                         <th>Quantity</th>
-                         <th>Amount</th>
-                         <th>Settings</th>
-                      </tr>
-                      <tr *ngFor="let li of oderList">
-                        <td>{{li.productName}}</td>
-                        <td>{{li.productQuantity}}</td>
-                        <td>{{li.productPrice}}</td>
-                        <td>
-                          <button class="btn-remove" (click)="deleteProductFromList(li)">
-                              <i class="glyphicon glyphicon-trash"></i></button>
-                        </td>
-                      </tr>
-                   </table>
-              </div>              
-           </div>
+<section id="intro" class="clearfix">
+  <div class="container">
+    <div class="intro-info">
+      <div class="panel panel-default home-panel">
+        <div class="panel-heading home-panel-heading">
+          Order List
+        </div>
+        <div class="panel-body">
+          <table class="table" border="1">
+            <thead>
+              <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let li of oderList">
+                <td>{{li.productName}}</td>
+                <td>{{li.productQuantity}}</td>
+                <td>{{li.productPrice}}</td>                
+              </tr>
+            </tbody>
+
+          </table>
+        </div>
       </div>
     </div>
   </div>
+</section>

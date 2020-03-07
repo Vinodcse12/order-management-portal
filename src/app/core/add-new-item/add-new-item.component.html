@@ -1,54 +1,65 @@
-<div class="container">
-  <h2>Add Item :</h2>
-  <form class="form-horizontal" [formGroup]="addItem" (ngSubmit)="addNewITem()">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="email">Add New Item:</label>
-      <div class="col-sm-10">
-          <select class="add-item-drop-down" formControlName="item" (change)="selectItem(addItem.value)">
-              <option *ngFor="let item of products" [ngValue]="item" >
-                {{ item.product }}
-              </option>
-            </select>
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="pwd">Price: </label>
-      <div class="col-sm-10">
-        <label class="add-item-drop-down"> {{ selectedItemAmount || 0.00 }}</label>
-      </div>
-    </div>
-
-    <div class="form-group">
-        <label class="control-label col-sm-2" for="pwd">quantity : </label>
-        <div class="col-sm-10">
-            <select class="add-item-drop-down" formControlName="qty" (change)="selectQuantity(addItem.value)">
-                <option *ngFor="let qty of quantities" [ngValue]="qty" >
-                  {{ qty }}
-                </option>
-              </select>
-        </div>
-      </div>
-      <div class="form-group">
-          <label class="control-label col-sm-2" for="pwd">Total Amount: </label>
-          <div class="col-sm-10">
-            <label class="add-item-drop-down"> {{ totalPrice }}</label>
-          </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="pwd">quantity : </label>
-            <div class="col-sm-10">
-                <select class="add-item-drop-down" formControlName="paymentMethod" (change)="selectPaymentMode(addItem.value)">
-                    <option *ngFor="let payMode of paymentMode" [ngValue]="payMode" >
-                      {{ payMode }}
-                    </option>
-                  </select>
+<section id="intro" class="clearfix">
+    <div class="container">
+        <div class="intro-info">
+            <div class="panel panel-default panel-container">
+                <div class="panel-heading panel-heading">
+                    Create New Order
+                  </div>
+                <div class="panel-body create-new-item-panel-body">
+                    <form [formGroup]="addItem" (ngSubmit)="addNewITem()">
+                        <div class="form-group row">
+                          <label for="inputItem" class="col-sm-2 col-form-label">Add New Item:</label>
+                          <div class="col-sm-10">
+                              <select class="add-item-drop-down" formControlName="item" (change)="selectItem(addItem.value)">
+                                  <option *ngFor="let item of products" [ngValue]="item" >
+                                    {{ item.product }}
+                                  </option>
+                                </select>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                          <label for="price" class="col-sm-2 col-form-label">Price:</label>
+                          <div class="col-sm-10">
+                              <label class="add-item-drop-down"> {{ selectedItemAmount || 0.00 }}</label>
+                          </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="quantity" class="col-sm-2 col-form-label">Quantity:</label>
+                            <div class="col-sm-10">
+                                <select class="add-item-drop-down" formControlName="qty" (change)="selectQuantity(addItem.value)">
+                                    <option *ngFor="let qty of quantities" [ngValue]="qty" >
+                                      {{ qty }}
+                                    </option>
+                                  </select>
+                            </div>
+                          </div>
+                          <div class="form-group row">
+                              <label for="totalAmount" class="col-sm-2 col-form-label">Total Amount:</label>
+                              <div class="col-sm-10">
+                                  <label class="add-item-drop-down"> {{ totalPrice }}</label>
+                              </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="paymentMethod" class="col-sm-2 col-form-label">Paymeny Option:</label>
+                                <div class="col-sm-10">
+                                    <select class="add-item-drop-down" formControlName="paymentMethod" (change)="selectPaymentMode(addItem.value)">
+                                        <option *ngFor="let payMode of paymentMode" [ngValue]="payMode" >
+                                          {{ payMode }}
+                                        </option>
+                                      </select>
+                                </div>
+                              </div>
+                        
+                       
+                        <div class="form-group row">
+                          <div class="col-sm-10">
+                              <button type="submit" class="btn btn-success">Process to buy</button>
+                          </div>
+                        </div>
+                      </form>
+                </div>
             </div>
-          </div>
-   
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-success">Process to buy</button>
-      </div>
+        </div>
     </div>
-  </form>
-</div>
+</section>
+<popup>Order Successfully</popup>

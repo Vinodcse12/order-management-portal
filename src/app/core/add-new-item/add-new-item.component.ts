@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrderServiceService } from './../../services/order-service.service';
-import { LoginServiceService } from './../../services/login-service.service'
+import { UserInfoService } from './../../services/user-info.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-add-new-item',
@@ -46,11 +48,12 @@ export class AddNewItemComponent implements OnInit {
   totalPrice: number;
   user: any;
   constructor(private orderService: OrderServiceService,
-    private lgnSrvc : LoginServiceService,
-    private router : Router) { }
+    private userInfo : UserInfoService,
+    private router : Router,
+    private popup: Popup) { }
 
   ngOnInit() {
-    this.user = this.lgnSrvc.getUserInfo();
+    this.user = this.userInfo.getUserInfo();
       
   }
 
@@ -68,12 +71,27 @@ export class AddNewItemComponent implements OnInit {
     this.addItem.controls['paymentMethod'].setValue(val.paymentMethod);
   }
   addNewITem(): void {
-    this.orderService.orderItem(this.addItem.value, this.user)
-      .subscribe((res) => {
-        if(res.status === 200) {
-          this.router.navigate(['/', 'home']);
+    if(!this.user) {
+      this.router.navigate(['/login']);
+    } else {
+      this.orderService.orderItem(this.addItem.value, this.user)
+      .subscribe(
+        (res) => {
+          if(res.status === 200) {
+            this.popup.show();
+            this.router.navigate(['/', 'home']);
+          }
+        },
+        (err) => {
+          if(err instanceof HttpErrorResponse) {
+            if (err.status === 401) {
+              this.router.navigate(['/login']);
+            }
+          }
         }
-      })
+      ) 
+    }
+       
   }
 
 }

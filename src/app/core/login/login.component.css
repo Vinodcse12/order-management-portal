@@ -1,6 +1,4 @@
 .login-panel {
-  float:right; 
-  font-size: 80%; 
-  position: relative; 
-  top:-10px
+  border: solid 1px #bdbdd6;
+  border-radius: 21px;
 }

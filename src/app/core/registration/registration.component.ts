@@ -3,6 +3,7 @@ import {FormGroup, FormControl} from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegServiceService } from '../../services/reg-service.service';
 import { LoginServiceService} from './../../services/login-service.service';
+import { UserInfoService } from './../../services/user-info.service';
 
 @Component({
   selector: 'app-registration',
@@ -30,7 +31,8 @@ export class RegistrationComponent implements OnInit {
   user: any;
   constructor(private regService : RegServiceService,
     private router: Router,
-    private lgnSrvc: LoginServiceService) { }
+    private lgnSrvc: LoginServiceService,
+    private userInfo: UserInfoService) { }
 
   ngOnInit() {
   }
@@ -41,24 +43,15 @@ export class RegistrationComponent implements OnInit {
       'password' : this.regForm.value.password
     }
     this.regService.registerUser(this.regForm.value)
-      .subscribe((res) => {
-        if(res) {
-          this.updateUser()
+      .subscribe(
+        res => {
+          localStorage.setItem('token', res.token);
+          this.userInfo.setUserInfo(res.user);
           this.router.navigate(['/', 'home']);
+        },
+        err => console.log(err)
+      )
+  }  
 
-        }
-      })
-  }
-
-  updateUser(): void {
-    this.lgnSrvc.login(this.user)
-      .subscribe((res) => {
-        this.setUser(res);
-      })
-  }
-
-  setUser(user): void {
-    this.lgnSrvc.setUserInfo(user);
-  }
 
 }
