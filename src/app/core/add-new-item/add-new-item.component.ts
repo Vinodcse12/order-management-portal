@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { OrderServiceService } from './../../services/order-service.service';
 import { UserInfoService } from './../../services/user-info.service';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Popup } from 'ng2-opd-popup';
 
 @Component({
   selector: 'app-add-new-item',
@@ -49,8 +48,7 @@ export class AddNewItemComponent implements OnInit {
   user: any;
   constructor(private orderService: OrderServiceService,
     private userInfo : UserInfoService,
-    private router : Router,
-    private popup: Popup) { }
+    private router : Router) { }
 
   ngOnInit() {
     this.user = this.userInfo.getUserInfo();
@@ -78,7 +76,7 @@ export class AddNewItemComponent implements OnInit {
       .subscribe(
         (res) => {
           if(res.status === 200) {
-            this.popup.show();
+            //this.popup.show();
             this.router.navigate(['/', 'home']);
           }
         },

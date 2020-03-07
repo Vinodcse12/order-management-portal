@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule} from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PopupModule } from 'ng2-opd-popup';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './core/home/home.component';
@@ -59,7 +58,6 @@ const routes: Routes = [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    PopupModule.forRoot(),
     RouterModule.forRoot(routes)
   ],
   providers: [AuthGuard,
